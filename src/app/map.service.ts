@@ -44,7 +44,7 @@ export class MapService {
       )
     };
 
-    realtime = L.realtime('https://wanderdrone.appspot.com/', {
+    realtime = L.Realtime('https://wanderdrone.appspot.com/', {
         interval: 3 * 1000
     }).addTo(map);
 
