@@ -53,7 +53,6 @@ export class MapService {
 //      this.map.fitBounds(realtime.getBounds(), {maxZoom: 3});
 //    });
 
-    setInterval(this.updateLocation(http), 5000);
 
   }
 
@@ -78,6 +77,7 @@ export class MapService {
         this.vtLayer = L.vectorGrid.slicer(result);
         this.vtLayer.addTo(this.map);
       });
+      setInterval(this.updateLocation(http), 5000);
     } else if (this.vtLayer) {
       this.map.removeLayer(this.vtLayer);
       delete this.vtLayer;
