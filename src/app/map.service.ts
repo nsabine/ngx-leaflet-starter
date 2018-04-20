@@ -52,6 +52,17 @@ export class MapService {
 //    realtime.on('update', function() {
 //      this.map.fitBounds(realtime.getBounds(), {maxZoom: 3});
 //    });
+
+    setInterval(updateLocation, 5000);
+
+}
+
+  updateLocation( )
+  {
+    this.http.get("https://wanderdrone.appspot.com/").subscribe(result => {
+      this.vtLayer = L.vectorGrid.slicer(result);
+      this.vtLayer.addTo(this.map);
+    });
   }
 
   disableMouseEvent(elementId: string) {
