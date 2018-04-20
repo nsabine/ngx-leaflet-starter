@@ -53,7 +53,7 @@ export class MapService {
 //      this.map.fitBounds(realtime.getBounds(), {maxZoom: 3});
 //    });
 
-    setInterval(updateLocation, 5000);
+    setInterval(this.updateLocation, 5000);
 
 }
 
