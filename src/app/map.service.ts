@@ -55,7 +55,7 @@ export class MapService {
 
     setInterval(this.updateLocation(http), 5000);
 
-}
+  }
 
   updateLocation(http: HttpClient) {
     this.http.get("https://wanderdrone.appspot.com/").subscribe(result => {
