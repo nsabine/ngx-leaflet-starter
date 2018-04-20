@@ -44,13 +44,14 @@ export class MapService {
       )
     };
 
-    var realtime = L.Realtime('https://wanderdrone.appspot.com/', {
-        interval: 3 * 1000
-    }).addTo(this.map);
 
-    realtime.on('update', function() {
-      this.map.fitBounds(realtime.getBounds(), {maxZoom: 3});
-    });
+//    var realtime = L.Realtime('https://wanderdrone.appspot.com/', {
+//        interval: 3 * 1000
+//    }).addTo(this.map);
+//
+//    realtime.on('update', function() {
+//      this.map.fitBounds(realtime.getBounds(), {maxZoom: 3});
+//    });
   }
 
   disableMouseEvent(elementId: string) {
@@ -62,7 +63,8 @@ export class MapService {
 
   toggleAirPortLayer(on: boolean) {
     if (on) {
-      this.http.get("assets/airports.min.geojson").subscribe(result => {
+    //this.http.get("assets/airports.min.geojson").subscribe(result => {
+      this.http.get("https://wanderdrone.appspot.com/").subscribe(result => {
         this.vtLayer = L.vectorGrid.slicer(result);
         this.vtLayer.addTo(this.map);
       });
