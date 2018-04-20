@@ -43,6 +43,14 @@ export class MapService {
         }
       )
     };
+
+    realtime = L.realtime('https://wanderdrone.appspot.com/', {
+        interval: 3 * 1000
+    }).addTo(map);
+
+    realtime.on('update', function() {
+      map.fitBounds(realtime.getBounds(), {maxZoom: 3});
+    });
   }
 
   disableMouseEvent(elementId: string) {
