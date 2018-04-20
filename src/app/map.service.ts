@@ -56,8 +56,10 @@ export class MapService {
 
   }
 
-  updateLocation(http: HttpClient) {
+  updateLocation(http: HttpClient, vtLayer: any) {
     this.http.get("https://wanderdrone.appspot.com/").subscribe(result => {
+      this.map.removeLayer(this.vtLayer);
+      delete this.vtLayer;
       this.vtLayer = L.vectorGrid.slicer(result);
       this.vtLayer.addTo(this.map);
     });
@@ -75,7 +77,7 @@ export class MapService {
     //this.http.get("assets/airports.min.geojson").subscribe(result => {
       this.http.get("https://wanderdrone.appspot.com/").subscribe(result => {
         this.vtLayer = L.vectorGrid.slicer(result);
-        this.vtLayer.addTo(this.map);
+        this.vtLayer.addTo(this.map, this.vtLayer);
       });
       setInterval(this.updateLocation(this.http), 5000);
     } else if (this.vtLayer) {
