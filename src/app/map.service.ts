@@ -44,12 +44,12 @@ export class MapService {
       )
     };
 
-    realtime = L.Realtime('https://wanderdrone.appspot.com/', {
+    var realtime = L.Realtime('https://wanderdrone.appspot.com/', {
         interval: 3 * 1000
-    }).addTo(map);
+    }).addTo(this.map);
 
     realtime.on('update', function() {
-      map.fitBounds(realtime.getBounds(), {maxZoom: 3});
+      this.map.fitBounds(realtime.getBounds(), {maxZoom: 3});
     });
   }
 
