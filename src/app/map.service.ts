@@ -57,8 +57,7 @@ export class MapService {
 
 }
 
-  updateLocation(http )
-  {
+  updateLocation(http: HttpClient) {
     this.http.get("https://wanderdrone.appspot.com/").subscribe(result => {
       this.vtLayer = L.vectorGrid.slicer(result);
       this.vtLayer.addTo(this.map);
