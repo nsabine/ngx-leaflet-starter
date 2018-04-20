@@ -53,11 +53,11 @@ export class MapService {
 //      this.map.fitBounds(realtime.getBounds(), {maxZoom: 3});
 //    });
 
-    setInterval(this.updateLocation, 5000);
+    setInterval(this.updateLocation(http), 5000);
 
 }
 
-  updateLocation( )
+  updateLocation(http )
   {
     this.http.get("https://wanderdrone.appspot.com/").subscribe(result => {
       this.vtLayer = L.vectorGrid.slicer(result);
